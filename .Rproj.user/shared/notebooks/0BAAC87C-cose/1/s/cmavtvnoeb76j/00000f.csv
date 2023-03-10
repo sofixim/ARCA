@@ -1,0 +1,5 @@
+"0","library(DT)"
+"0","DT::datatable("
+"0","  head(data, 10),"
+"0","  fillContainer = FALSE, options = list(pageLength = 4)"
+"0",")"

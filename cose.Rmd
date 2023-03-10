@@ -1,0 +1,152 @@
+---
+title: "Presentation Ninja"
+subtitle: "⚔<br/>with xaringan"
+author: "Yihui Xie"
+institute: "RStudio, PBC"
+date: "2016/12/12 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r, include = FALSE}
+library(DT)
+library(stargazer)
+ load("myenv.RData")
+```
+
+```{css, echo=F, eval = T}
+.inverse {
+  background-color: #272822;
+  color: #d6d6d6;
+  text-shadow: 0 0 20px #333;
+}
+.scrollable {
+  height: 500px;
+  overflow-y: auto;
+}
+.scrollable-auto {
+  height: 80%;
+  overflow-y: auto;
+}
+.remark-slide-number {
+  display: none;
+}
+```
+
+---
+# Ciao!
+
+---
+## Tabella
+
+```{r, echo=FALSE, warning=FALSE}
+library(DT)
+DT::datatable(
+  head(data, 10),
+  fillContainer = FALSE, options = list(pageLength = 4)
+)
+```
+
+
+---
+.pull-left[
+**Codice**
+
+<br>
+
+```{r, echo=TRUE, eval=TRUE}
+m = lm(pressure ~ temperature, data = data)
+```
+]
+
+.pull-right[
+**Summary**
+
+<br>
+
+```{r, results='asis', echo=FALSE}
+stargazer(m, type = "html", summary = TRUE, title = "Risultati del modello", digits = 2,
+     header = FALSE)
+```
+]
+
+---
+*codice*
+.left-column[
+```{r, echo=TRUE, eval=TRUE}
+m = lm(pressure ~ temperature, data = data)
+```
+]
+
+*plot*
+.right-column[
+```{r, echo=FALSE, eval=TRUE}
+plot(m)
+```
+]
+---
+
+**Codice scrollabile**
+
+.scrollable[
+```{r, echo=TRUE, eval=FALSE}
+irt.icc = function(model) {
+  item_par = model$item
+  est_theta = seq(-4,4, length.out=1000)
+  item_prob = list()
+  if (any(grep("guess", colnames(item_par))) == F) {
+    for (i in 1:nrow(item_par)) {
+      item_prob[[i]] = data.frame(theta = est_theta)
+      item_prob[[i]]$it_p = IRT(item_prob[[i]]$theta, 
+                          b = item_par[i, "xsi.item"], 
+                          a = item_par[i, "B.Cat1.Dim1"])
+      item_prob[[i]]$item = item_par[i, "item"]
+}
+  } else {
+     for (i in 1:nrow(item_par)) {
+      item_prob[[i]] = data.frame(theta = est_theta)
+      item_prob[[i]]$it_p = IRT(item_prob[[i]]$theta, 
+                          b = item_par[i, "AXsi_.Cat1"], 
+                          a = item_par[i, "B.Cat1.Dim1"], 
+                          c = item_par[i, "guess"])
+      item_prob[[i]]$item = item_par[i, "item"]
+}
+  }
+  p = do.call("rbind", item_prob)
+  gp = ggplot(p, 
+       aes(x = theta, y = it_p, group = item, col =
+             item)) + geom_line(lwd = 1)
+  object = list(prob.data = p, 
+              icc.graph = gp)
+return(object)
+}
+
+```
+]
+
+
+
+---
+.scrollable[ 
+
+#ancora colonne! ^^
+
+.left-column[
+```{r, echo=FALSE, fig.cap = "Figura", fig.align="center", out.width="50%"}
+knitr::include_graphics(path = "images/graph.jpeg")
+```
+]
+  
+.right-column[ 
+```{r, echo=FALSE, fig.cap = "Figura", fig.align="center", out.width="50%"}
+knitr::include_graphics(path = "images/blues.png")
+```
+]
+
+]

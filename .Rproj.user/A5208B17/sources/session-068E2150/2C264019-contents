@@ -1,0 +1,213 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{setspace}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage[italian]{babel}
+\captionsetup{format=plain, font=small, labelfont=bf}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={latex},
+  pdfauthor={Sofia Russo},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{latex}
+\author{Sofia Russo}
+\date{2023-03-09}
+
+\begin{document}
+\maketitle
+
+\pagenumbering{gobble}
+
+%\begin{titlepage}
+	\begin{center}
+		\includegraphics[width=0.25\linewidth]{images/LOGO.png}
+	\end{center}
+	
+	\begin{center}
+		\begin{Large}
+			\textbf{University of Padova}
+			
+			Department of Developmental Psychology
+		\end{Large}
+		
+	\end{center}
+	
+	\vspace{3mm}
+	\begin{center}
+		\begin{large}
+			Ph.D. Course in Niente (DDD ciclo)
+		\end{large}
+		
+		\begin{huge}
+			\bfseries
+			Pressure and temperature
+		\end{huge}
+		
+		
+	\end{center}
+	
+	
+	\begin{center}
+		Academic Year: 2000000
+	\end{center}
+	
+
+
+\vspace{2cm}
+	\begin{multicols}{2}
+		\begin{flushleft}
+%			\begin{large}
+				\textbf{Advisor:} Prof. Pressure
+				
+				\textbf{Co-Advisor:} Prof. Temperature
+	%		\end{large}
+			
+		\end{flushleft}
+		\columnbreak
+		\begin{flushright}
+			\vspace{1.5cm}
+			
+				\textbf{Ph.D. Candidate:} hihi 
+			
+		\end{flushright}
+		
+	\end{multicols}
+
+\vspace{2cm}
+
+\newpage
+
+
+
+
+\hypersetup{linkcolor = black}
+\newpage
+\renewcommand{\contentsname}{Indice}
+\pagenumbering{roman}
+\tableofcontents
+\addcontentsline{toc}{section}{\contentsname}
+
+% list of figures have to be added manually to table of contents
+\listoffigures % Per toogliere la lista delle figura, aggiungere % all'inizio della riga
+
+\newpage
+\listoftables % Per toogliere la lista delle tabelle, aggiungere % all'inizio della riga
+
+\doublespacing
+
+\newpage
+\pagenumbering{arabic}
+\hypersetup{linkcolor = blue}
+
+\hypertarget{introduzione}{%
+\section{Introduzione}\label{introduzione}}
+
+\hypertarget{metodo}{%
+\section{Metodo}\label{metodo}}
+
+\hypertarget{risultati}{%
+\section{Risultati}\label{risultati}}
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.3\textwidth}
+
+\includegraphics[width=0.8\linewidth]{images/blues} 
+\caption{Cieli}
+\label{sub:cieli1}
+\end{subfigure}
+\begin{subfigure}{0.3\textwidth}
+
+\includegraphics[width=0.8\linewidth]{images/insidearth} 
+\caption{Earth}
+\label{sub:earth}
+\end{subfigure}
+\begin{subfigure}{0.3\textwidth}
+
+\includegraphics[width=0.8\linewidth]{latex_files/figure-latex/unnamed-chunk-3-1} 
+\caption{Un grafico.}
+\label{sub:grafico}
+\end{subfigure}
+\caption{Una figura triple}
+\end{figure}
+
+\hypertarget{equazione}{%
+\subsection{Equazione}\label{equazione}}
+
+Come puoi vedere in equazione \ref{eq:mean}, tutto va bene.
+
+\begin{equation}\label{eq:mean}
+
+
+
+$z = \frac{x_i - \bar{X}}{sd} = \frac{\ensuremath{2\times 10^{-4}}- 124.3367053}{224.6225399 } = -0.5533362$ 
+
+\end{equation}
+
+\hypertarget{tabella}{%
+\subsection{Tabella}\label{tabella}}
+
+Come puoi vedere in Tabella \ldots{} , niente ha senso
+
+\end{document}

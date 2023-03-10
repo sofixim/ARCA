@@ -1,0 +1,170 @@
+---
+title: "Pressure"
+subtitle: Relating temperature and pressure
+author: "Sofia Russo"
+date: "Università degli Studi di Padova"
+output:
+  pdf_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 3
+linestretch: 1.5
+geometry: margin=1in
+bibliography: bibliography/biblio_SECOND.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, comment="lol", fig.align = 'center')
+hook_output <- knitr::knit_hooks$get("output")
+ 
+ knitr::knit_hooks$set(output = function(x, options) {
+     if (!is.null(n <- options$out.lines)) {
+         x <- xfun::split_lines(x)
+         if (length(x) > n) {
+             # truncate the output
+             x <- c(head(x, n), "....\n")
+         }
+         x <- paste(x, collapse = "\n")
+     }
+     hook_output(x, options)
+ })
+load("myenv.RData")
+library(stargazer)
+```
+
+# DATASET
+<!-- prova -->
+## Variable: pressure 
+*Prova* **prova** ***blablabla*** \textcolor{red}{prova} \color{red}\Huge blablabla \normalsize \normalcolor prova \Huge blablabla \normalsize  @epifania2021implicit
+
+>Prova prova blablabla Prova prova blablabla  
+
+- Prova 
+- prova 
+    1. Papappero 
+        1. Pappararra
+- blablabla 
+
+1. Prova 
+2. prova 
+7. blablabla 
+
+### Inspection 
+Prova prova blablabla Prova prova blablabla Prova prova blablabla Prova prova blablabla Prova prova blablabla Prova prova blablabla Prova prova blablabla Prova prova blablabla Prova prova blablabla 
+
+- Prova
+    - Mannaggia
+        - Aaaaaa
+    - Mannaggia
+- Prova    
+
+Con i piedi[^1]
+
+[^1]: ciao ciao
+
+Con le mani [^2]
+
+[^2]: ciao
+
+#### What is relevant to note: nothing 
+
+prova \color{blue}[Link](https://poterealpopolo.org/)\normalcolor
+
+#### Oh well whatever: nevermind 
+
+\color{blue}[![cieli](images/blues.png)](https://it.wikipedia.org/wiki/Cielo)\normalcolor
+![cieli](images/blues.png) 
+
+```{r, fig.cap = "Caption", fig.align='right', out.width="10%"}
+knitr::include_graphics(path = "images/earth_core.jpeg")
+```
+
+<!-- Porva bibliografia @epifania2020dscoreapp  -->
+
+```{r, echo=FALSE}
+head(data)
+```
+Questo è il dataset: 
+```{r, echo=FALSE, eval=TRUE}
+# rinominare la variabaile dipendente in y
+data$y = pressure$temperature
+# rinominare la variabile indipedente in x
+data$x = pressure$pressure
+# maggiori dettagli sulla x
+summary(data$x)
+
+```
+
+```{r, comment='nonlol', out.lines=4}
+data
+```
+
+e questo è il plot grezzi:
+```{r, echo=FALSE}
+# plot 
+plot(data$y ~ data$x)
+```
+
+mentre questo è la regressione applicata, con codice e risultati: 
+```{r, echo=TRUE}
+# regressione
+m = lm(y ~ x, data = data)
+# summary del modello
+summary(m)
+```
+
+```{r, results='asis', eval=TRUE, echo=FALSE}
+stargazer(data, type="latex", summary = TRUE, 
+           title= "Tabella di summary", digits = 2, header=FALSE)
+```
+```{r, results='asis', eval=TRUE, echo=FALSE}
+m1 = lm(temperature ~ pressure, data = data)
+stargazer(m, type = "latex", summary = TRUE, title = "Risultati del modello", digits = 2,
+     header = FALSE)
+```
+
+```{r, echo=FALSE}
+
+caption_at_bottom <- function(expr) {
+  x <- capture.output(expr)
+  cap <- grep("\\\\caption", x)
+  lab <- grep("\\\\label", x)
+  last <- grep("\\\\end\\{table", x)
+  cat(
+    paste(
+      c(x[-last], x[cap], x[lab], x[last])[-c(cap, lab)]
+    , collapse = "\n")
+  , "\n")
+}
+```
+
+
+```{r, results='asis', eval=TRUE, echo=FALSE}
+m0 = lm(temperature ~ 1, data = data)
+m1 = lm(temperature ~ pressure, data = data)
+
+caption_at_bottom(
+  stargazer(m0, m1, type = "latex", title = "Model comparison", digits = 2, intercept.top = TRUE,
+     intercept.bottom = FALSE, header = FALSE)
+  )
+```
+
+Formule 
+
+```{r, echo=FALSE}
+medie = mean(data$pressure)
+deviazioni= sd(data$pressure)
+valore = data[1,2]
+```
+
+$z = \frac{x_i - \bar{X}}{sd} = \frac{`r valore`- `r medie `}{`r deviazioni` } = `r valore - medie / deviazioni `$ 
+
+```{r}
+x = data$pressure
+y = data$temperature
+```
+
+
+$ y = \left(\frac{a}{b})\right ^2$ 
+
+<!-- $ a = \left(\frac {`r x `}{`r y `} \ right)^2 = `r (x/y)^2 `$ -->

@@ -1,0 +1,82 @@
+---
+title: "04-LaTeX-`knitr`"
+author: Ottavia M. Epifania
+date: 'Corso `RMarkdown`'
+institute: "ottavia.epifania@unipd.it"
+output:
+  beamer_presentation:
+    theme: CambridgeUS
+    colortheme: beaver
+    fonttheme: serif
+    highlight: haddock
+header-includes: 
+  - \AtBeginDocument{\title[\LaTeX bis]{04-\LaTeX-`knitr`}}
+  - \usepackage{graphicx}
+  - \usepackage{multicol}
+  - \usepackage{setspace}
+  - \usepackage{tabularx}
+  - \usepackage[italian]{babel}
+  - \usepackage{tikzsymbols}
+  - \usepackage{subcaption}
+  - \usepackage{tikz}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+\onslide<i-2>
+ \begin{columns}
+ \begin{column}{0.50\textwidth}
+ Testo nella prima colonna
+ \end{column}
+
+ \begin{column}{0.50\textwidth}
+ \onslide<2-> Testo nella seconda colonna
+ \end{column}
+
+ \end{columns}  
+ 
+
+::: columns
+
+:::: column
+
+```{r}
+ plot(pressure)
+```
+::::
+
+:::: column
+
+```{r}
+
+head(pressure)
+```
+::::
+
+:::
+
+# Blocchi 
+
+\onslide<i-3>
+
+\begin{block}{Il testo}
+
+Viene racchiuso in blocchi che lo mettono in risalto
+
+\end{block}
+
+
+\onslide<2-2>
+\begin{exampleblock}{Blocchi di esempio}
+
+Dove il titolo è in verde e a seconda del tema scelto anche la sfumatura+
+\end{exampleblock}
+
+
+\onslide<1-3>
+\begin{alertblock}{Blocchi di Warning}
+
+Dove il titolo è in rosso e a seconda del tema scelto anche la sfumatura+
+\end{alertblock}

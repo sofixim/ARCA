@@ -1,0 +1,28 @@
+---
+title: "second"
+author: "Sofia Russo"
+date: "2023-03-07"
+output: 
+  bookdown::pdf_document2:
+    keep_tex: yes
+    number_sections: yes
+    toc: yes
+---
+
+As you can see in Table \@ref(tab:cars-table), in Figure \@ref(fig:speed-dist) or Equation \@ref(eq:media).. 
+
+
+```{r cars-table}
+knitr::kable(mtcars[1:5, ], caption = "Questo è un dataset")
+```
+
+```{r speed-dist, fig.cap="Grafico mpg-cilindrata"}
+par(mar = c(4, 4, .2, .1))
+plot(mtcars$mpg ~ mtcars$cyl)  # a boxplot
+```
+
+\begin{equation}
+\bar{X} = \frac{\sum_{i=1}^n X_i}{n} (\#eq:media)
+\end{equation}
+
+

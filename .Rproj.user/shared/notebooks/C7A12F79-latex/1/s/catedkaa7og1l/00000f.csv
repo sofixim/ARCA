@@ -1,0 +1,4 @@
+"0","data=pressure"
+"0","medie = mean(data$pressure)"
+"0","deviazioni= sd(data$pressure)"
+"0","valore = data[1,2]"

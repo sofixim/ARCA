@@ -1,0 +1,95 @@
+---
+title: "It's the final countdown"
+subtitle: "tananananaaa"
+author: "Sofi"
+date: "today"
+output: 
+  pdf_document:
+      includes:
+        before_body: titolo.sty
+      keep_tex: yes 
+      number_sections: yes 
+      toc_depth: 2
+bibliogrphy: biblio.bib
+header-includes: 
+  - \usepackage{setspace} 
+  - \usepackage{multicol}
+  - \usepackage{caption} 
+  - \usepackage[italian]{babel}
+  - \captionsetup{format=plain, font=small, labelfont=bf} 
+  - \usepackage{graphicx} 
+  - \usepackage{subcaption} 
+---
+
+
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning=FALSE, comment="", fig.align = 'center')
+load("myenv.RData")
+```
+
+
+# Questo è un PDF! 
+
+Con: 
+
+- un 
+
+- elenco!
+
+# Queste invece sono parole 
+
+*in corsivo* 
+
+**in grassetto**
+
+***e in corsetto***. 
+
+# Adesso arriva una tabella
+
+Nello specifico, è la Tabella \ref{tab:tabella}
+
+```{r, results='asis'}
+print(xtable::xtable(data[1:7, ],
+caption = "Bellissimo dataset",
+label = "tab:tabella"),
+comment = FALSE,
+caption.placement = "top")
+```
+
+\clearpage 
+# Ora un grafico! 
+
+con il suo codice:
+```{r, results='asis', echo=TRUE}
+plot(pressure)
+```
+
+# Equazione 
+
+sempe la stessa, ehehe 
+
+```{r, echo=FALSE}
+medie = mean(data$pressure)
+deviazioni= sd(data$pressure)
+valore = data[1,2]
+```
+
+$z = \frac{x_i - \bar{X}}{sd} = \frac{`r valore`- `r medie `}{`r deviazioni` } = `r valore - medie / deviazioni `$ 
+
+\clearpage
+
+#Risultati di R
+
+Sono risultati di un modello lineare base.
+
+<br>
+
+```{r, echo=F, eval=TRUE}
+m = lm(pressure ~ temperature, data = data)
+summary(m)
+```
+
+<br>
+
+Belli vero?
+

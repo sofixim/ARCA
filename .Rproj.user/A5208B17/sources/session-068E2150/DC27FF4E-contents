@@ -1,0 +1,80 @@
+---
+title: "latex"
+author: "Sofia Russo"
+date: "2023-03-09"
+output: 
+  pdf_document:
+      includes:
+        before_body: titolo.sty
+      keep_tex: yes 
+      number_sections: yes 
+      toc_depth: 2
+bibliogrphy: biblio.bib
+header-includes: 
+  - \usepackage{setspace} 
+  - \usepackage{multicol}
+  - \usepackage{caption} 
+  - \usepackage[italian]{babel}
+  - \captionsetup{format=plain, font=small, labelfont=bf} 
+  - \usepackage{graphicx} 
+  - \usepackage{subcaption} 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduzione
+
+# Metodo 
+
+# Risultati 
+
+\begin{figure}
+\centering
+\begin{subfigure}{0.3\textwidth}
+```{r, out.width="80%", echo = FALSE, eval = T}
+knitr::include_graphics("images/blues.png")
+```
+\caption{Cieli}
+\label{sub:cieli1}
+\end{subfigure}
+\begin{subfigure}{0.3\textwidth}
+```{r, out.width="80%", echo = FALSE, eval = T}
+knitr::include_graphics("images/insidearth.png")
+```
+\caption{Earth}
+\label{sub:earth}
+\end{subfigure}
+\begin{subfigure}{0.3\textwidth}
+```{r, out.width="80%", echo = FALSE, eval = T}
+data = pressure
+plot(data)
+```
+\caption{Un grafico.}
+\label{sub:grafico}
+\end{subfigure}
+\caption{Una figura triple}
+\end{figure}
+
+## Equazione
+Come puoi vedere in equazione \ref{eq:mean}, tutto va bene.
+
+\begin{equation}\label{eq:mean}
+
+```{r, echo=FALSE}
+data=pressure
+medie = mean(data$pressure)
+deviazioni= sd(data$pressure)
+valore = data[1,2]
+x = data$pressure
+y = data$temperature
+```
+
+$z = \frac{x_i - \bar{X}}{sd} = \frac{`r valore`- `r medie `}{`r deviazioni` } = `r valore - medie / deviazioni `$ 
+
+\end{equation}
+
+## Tabella 
+
+Come puoi vedere in Tabella ... , niente ha senso 

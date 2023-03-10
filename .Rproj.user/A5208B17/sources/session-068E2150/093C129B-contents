@@ -1,0 +1,93 @@
+---
+title: "AHJK"
+author: "tuttx"
+format: 
+  html:
+    toc: true
+    toc-title: Altro titolo
+    toc-location: right
+    toc-depth: 3
+editor: source
+lang: it
+---
+
+
+```{r}
+#| fig-cap: "La mia immagine nuova"
+#| echo: false
+#| eval: true
+#| fig-cap-location: top
+#| out-width: 50%
+#| label: fig-prima
+#| fig-align: right
+knitr::include_graphics("images/blues.png")
+```
+
+
+[![earth](images/earth_core.jpeg)](https://it.wikipedia.org/wiki/Cielo)
+
+Che bel testo lalalalà @fig-grafico
+
+```{r}
+#| fig-cap: "Il mio grafico"
+#| fig-cap-location: top
+#| echo: false
+#| warning: false
+#| out-width: 50%
+#| fig-align: center
+#| label: fig-grafico
+library(ggplot2)
+load("myenv.RData")
+plot(data$pressure, data$temperature)
+```
+
+:::: {.columns}
+
+
+::: {.column width="30%"}
+
+testo nella prima colonna
+
+:::
+
+::: {.column width="30%"}
+
+Testo nella seconda colonna
+
+:::
+
+::: {.column width="30%"}
+
+testo nella prima colonna
+
+:::
+
+::::
+
+::: {.panel-tabset}
+
+## Pannello 1
+
+Questa è @fig-seconda
+
+```{r}
+#| fig-cap: "La mia immagine nuova"
+#| echo: false
+#| eval: true
+#| fig-cap-location: top
+#| out-width: 50%
+#| label: fig-seconda
+#| fig-align: right
+knitr::include_graphics("images/blues.png")
+```
+
+## Pannello 2
+
+Primo tabset con una tabella contenente il dataset
+
+## Pannello 3
+
+Terzo tabset con il grafico dei dati
+
+:::
+
